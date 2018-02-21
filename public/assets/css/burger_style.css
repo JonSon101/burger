@@ -1,0 +1,9 @@
+body {
+    background-image: url("../img/burger_background.jpg");
+    background-color: #cccccc;
+    background-size: cover;
+    background-repeat: no-repeat;
+ }
+.jumbotron {
+    text-align: center;
+}
