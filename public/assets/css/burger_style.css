@@ -7,3 +7,10 @@ body {
 .jumbotron {
     text-align: center;
 }
+#style-opacity {
+    background-color:rgba(0, 0, 0, 0.5);
+
+}
+#burgerTitle {
+    color: white;
+}
