@@ -17,14 +17,15 @@ router.get('/', function(req, res) {
 
 router.post('/api/burgers', function(req, res) {
     //console.log("burgers_controller-router.post");
-    burger.addBurger(["name"], [req.body.name], function(result) {
-
+    //console.log("req.body.burgerName: ", req.body.burgerName);
+    burger.addBurger(req.body.burgerName, function(result) {
+        //console.log("burgers_controller result:", result);
         res.json({ id: result.insertId });
     });
 });
 
 router.put('/api/burgers/:id', function(req, res) {
-    //console.log("burgers_controller-router.put");
+    console.log("burgers_controller-router.put");
     burger.devourBurger(req.params.id, function(result) {
         if (result.changedRows === 0 ) {
             return res.status(404).end();
@@ -33,4 +34,14 @@ router.put('/api/burgers/:id', function(req, res) {
     });
 });
 
+router.delete("/api/burgers/:id", function(req, res) {
+
+    burger.delete(req.params.id, function(result) {
+        if (result.affectedRows == 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
+});
 module.exports = router;

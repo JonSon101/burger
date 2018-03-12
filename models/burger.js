@@ -10,15 +10,21 @@ var burger = {
     },
     addBurger: function(burgerName, cb) {
         //console.log("burger-addBurger");
+        //console.log("burgerName: ", burgerName);
         orm.insertOne(burgerName, function(res) {
             //console.log("burger-res", res);
             cb(res);
         });
     },
     devourBurger: function(burgerID, cb) {
-        //console.log("burger-devourBurger");
+        console.log("burger-devourBurger");
         orm.updateOne(burgerID, function(res) {
-            //console.log("burger-res", res);
+            console.log("burger-res", res);
+            cb(res);
+        });
+    },
+    delete: function(burgerID, cb) {
+        orm.delete(burgerID, function(res) {
             cb(res);
         });
     }

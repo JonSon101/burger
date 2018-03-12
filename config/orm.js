@@ -13,21 +13,38 @@ var orm = {
     },
     insertOne: function(burgerName, cb) {
         //console.log("orm-insertOne");
-        var queryString = "INSERT INTO burgers (burger_name) VALUES (??)";
+        //console.log("burgerName: ", burgerName);
+        var queryString = "INSERT INTO burgers (burger_name) VALUES (?)";
         //console.log(queryString);
-        connection.query(queryString, [burgerName], function(err, results) {
-            if (err) throw err;
-            //console.log("orm-result", result);
-            cb(result);
+        connection.query(queryString, burgerName, function(err, results) {
+            //console.log("inside connection:", burgerName);
+            if (err) {
+                throw err;
+            }
+            //console.log("orm-result", results);
+            cb(results);
         });
     },
     updateOne: function(burgerID, cb) {
-        //console.log("orm-updateOne");
-        var queryString = "UPDATE burgers SET devoured = 1 WHERE id = ??";
-        //console.log(queryString);
-        connection.query(queryString, [burgerID], function(err, result) {
+        console.log("orm-updateOne");
+        var queryString = "UPDATE burgers SET devoured = 1 WHERE id = ";
+        queryString += Number(burgerID);
+        console.log(queryString);
+        connection.query(queryString, function(err, result) {
             if (err) throw err;
-            //console.log("orm-results", result);
+            console.log("orm-results", result);
+            cb(result);
+        });
+    },
+    delete: function(burgerID, cb) {
+        var queryString = "DELETE FROM burgers WHERE id = ";
+        queryString += Number(burgerID);
+
+        connection.query(queryString, function(err, result) {
+            if (err) {
+                throw err;
+            }
+
             cb(result);
         });
     }

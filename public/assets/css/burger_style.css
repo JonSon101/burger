@@ -14,3 +14,24 @@ body {
 #burgerTitle {
     color: white;
 }
+
+.col-md-6 {
+    color: white;
+    border: 1px solid white;
+}
+
+#burgersToEat_Col {
+    float: left;
+}
+
+#burgersEaten_Col {
+    float: right;
+}
+
+#burgerForm {
+    margin-bottom: 20px;
+}
+
+.burger {
+    margin-bottom: 10px;
+}
